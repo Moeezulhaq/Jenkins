@@ -12,7 +12,7 @@ pipeline {
 
     stage('deploy-stack') {
       when {
-        expression { params.ACTION == 'delete-stack' }
+        expression { params.ACTION == 'deploy-stack' }
       }
       steps {
       sh "aws cloudformation create-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"
