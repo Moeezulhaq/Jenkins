@@ -24,7 +24,7 @@ pipeline {
         expression { params.ACTION == 'create-changeset' }
       }
       steps {
-      sh "aws cloudformation update-stack --stack-name jenkinstest --region 'us-east-1'"    
+      sh "aws cloudformation update-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"    
     }
   }
 
