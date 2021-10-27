@@ -3,7 +3,7 @@ pipeline {
   parameters {
     choice(
       name: 'ACTION',
-      choices: ['create-changeset', 'execute-changeset', 'deploy-stack', 'delete-stack'],
+      choices: ['create-changeset', 'deploy-stack', 'delete-stack'],
       description: 'CloudFormation Actions'
     )
   }
@@ -19,11 +19,16 @@ pipeline {
     }
   }
     
-    
-    
-    
-    
-    
+    stage('create-changeset') {
+      when {
+        expression { params.ACTION == 'create-changeset' }
+      }
+      steps {
+      sh "aws cloudformation update-stack --stack-name jenkinstest --region 'us-east-1'"    
+    }
+  }
+
+
     stage('delete-stack') {
       when {
         expression { params.ACTION == 'delete-stack' }
@@ -32,10 +37,6 @@ pipeline {
       sh "aws cloudformation delete-stack --stack-name jenkinstest --region 'us-east-1'"    
     }
   }
-
-
-
-
 
 
 
