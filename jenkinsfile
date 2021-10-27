@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  }
+  
 
   parameters {
     choice(
@@ -35,7 +35,7 @@ pipeline {
 
       }
     }
-
+}
 
 //     stage('stack-execution') {
 //       when {
