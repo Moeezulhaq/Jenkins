@@ -9,16 +9,8 @@ pipeline {
   }
 
   stages { 
-    stage('action') {
-      when {
-        expression { params.ACTION == 'create-changeset' || params.ACTION == 'execute-changeset' || params.ACTION == 'deploy-stack' || params.ACTION == 'delete-stack'}
-      }
-        steps {
-            aws cloudformation create-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'
-        }
-      
-      }
-    }
+
+    
 
 
 //     stage('stack-execution') {
@@ -69,3 +61,4 @@ pipeline {
 
 //   }
 }
+  }
