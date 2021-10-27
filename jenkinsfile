@@ -3,7 +3,7 @@ pipeline {
   parameters {
     choice(
       name: 'ACTION',
-      choices: ['create-changeset', 'deploy-stack', 'delete-stack'],
+      choices: ['deploy-stack', 'update-stack', 'delete-stack'],
       description: 'CloudFormation Actions'
     )
   }
@@ -19,9 +19,9 @@ pipeline {
     }
   }
     
-    stage('create-changeset') {
+    stage('update-stack') {
       when {
-        expression { params.ACTION == 'create-changeset' }
+        expression { params.ACTION == 'update-stack' }
       }
       steps {
       sh "aws cloudformation update-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"    
