@@ -10,47 +10,20 @@ pipeline {
 
   stages { 
 
+    stage('deploy-stack') {
+      when {
+        expression { params.ACTION == 'delete-stack' }
+      }
+      steps {
+      sh "aws cloudformation create-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"
+    }
+  }
     
-
-
-//     stage('stack-execution') {
-//       when {
-//         expression { params.ACTION == 'deploy-stack' || params.ACTION == 'execute-changeset' }
-//       }
-//       steps {
-//         ansiColor('xterm') {
-//           container("jenkins-agent") {
-//             withCredentials([[
-//               $class: 'AmazonWebServicesCredentialsBinding',
-//               credentialsId: "${CFN_CREDENTIALS_ID}",
-//               accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-//               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-//                 sh 'scripts/deploy-stack.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${CHANGESET_MODE} ${REGION}'
-//             }
-//           }
-//         }
-//       }
-//     }
-
-//     stage('create-changeset') {
-//       when {
-//         expression { params.ACTION == 'create-changeset' }
-//       }
-//       steps {
-//         ansiColor('xterm') {
-//           container("jenkins-agent") {
-//             withCredentials([[
-//               $class: 'AmazonWebServicesCredentialsBinding',
-//               credentialsId: "${CFN_CREDENTIALS_ID}",
-//               accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-//               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-//                 sh 'scripts/deploy-stack.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${CHANGESET_MODE} ${REGION}'
-//             }
-//           }
-//         }
-//       }
-//     }
-
+    
+    
+    
+    
+    
     stage('delete-stack') {
       when {
         expression { params.ACTION == 'delete-stack' }
@@ -58,8 +31,13 @@ pipeline {
       steps {
       sh "aws cloudformation delete-stack --stack-name jenkinstest --region 'us-east-1'"    
     }
+  }
 
-//   }
-}
+
+
+
+
+
+
   }
 }
