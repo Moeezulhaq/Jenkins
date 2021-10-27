@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Submit Stack') {
             steps {
-            sh "aws cloudformation delete-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"
+            sh "aws cloudformation delete-stack --stack-name jenkinstest "
               }
              }
             }
