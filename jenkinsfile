@@ -15,27 +15,27 @@ pipeline {
     stage('action') {
       when {
         expression { params.ACTION == 'create-changeset' || params.ACTION == 'execute-changeset' || params.ACTION == 'deploy-stack' || params.ACTION == 'delete-stack'}
+     
+      steps {
+        ansiColor('xterm') {
+          script {
+            if (!params.TOGGLE) {
+                currentBuild.result = 'ABORTED' //If you do not set the toggle flag to true before executing the build action, it will automatically abort the pipeline for any action.
+            } else {
+                if (params.ACTION == 'create-changeset') {
+                    env.CHANGESET_MODE = false
+                } else {
+                    env.CHANGESET_MODE = true
+                }
+            }
+          }
+        }
       }
     }
-  }     
-    //   steps {
-    //     ansiColor('xterm') {
-    //       script {
-    //         if (!params.TOGGLE) {
-    //             currentBuild.result = 'ABORTED' //If you do not set the toggle flag to true before executing the build action, it will automatically abort the pipeline for any action.
-    //         } else {
-    //             if (params.ACTION == 'create-changeset') {
-    //                 env.CHANGESET_MODE = false
-    //             } else {
-    //                 env.CHANGESET_MODE = true
-    //             }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
 
-//   }
+      }
+    }
+  }
 
 
 //     stage('stack-execution') {
