@@ -10,35 +10,33 @@ pipeline {
 
   stages { 
 
-    stage('deploy-stack') {
-      when {
-        expression { params.ACTION == 'deploy-stack' }
-      }
-      steps {
-      sh "aws cloudformation create-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"
+        stage('deploy-stack') {
+        when {
+            expression { params.ACTION == 'deploy-stack' }
+        }
+        steps {
+        sh "aws cloudformation create-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"
+        }
     }
-  }
-    
-    stage('update-stack') {
-      when {
-        expression { params.ACTION == 'update-stack' }
-      }
-      steps {
-      sh "aws cloudformation update-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"    
+        
+        stage('update-stack') {
+        when {
+            expression { params.ACTION == 'update-stack' }
+        }
+        steps {
+        sh "aws cloudformation update-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"    
+        }
     }
-  }
 
 
-    stage('delete-stack') {
-      when {
-        expression { params.ACTION == 'delete-stack' }
-      }
-      steps {
-      sh "aws cloudformation delete-stack --stack-name jenkinstest --region 'us-east-1'"    
+        stage('delete-stack') {
+        when {
+            expression { params.ACTION == 'delete-stack' }
+        }
+        steps {
+        sh "aws cloudformation delete-stack --stack-name jenkinstest --region 'us-east-1'"    
+        }
     }
-  }
-
-
 
   }
 }
