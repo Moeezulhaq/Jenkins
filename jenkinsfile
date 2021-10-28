@@ -28,7 +28,6 @@ pipeline {
         }
     }
 
-
         stage('delete-stack') {
         when {
             expression { params.ACTION == 'delete-stack' }
