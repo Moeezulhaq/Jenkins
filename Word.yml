@@ -8,7 +8,7 @@ Parameters:
   MyAvailabilityZone:
     Description: Select the AZ
     Type: String
-    Default: us-east-1a
+    Default: ${AvailabilityZone}
     AllowedValues:
       - us-east-2a
       - us-east-2b    
