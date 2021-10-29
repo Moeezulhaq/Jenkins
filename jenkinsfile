@@ -6,21 +6,19 @@ pipeline {
       choices: ['deploy-stack', 'update-stack', 'delete-stack'],
       description: 'CloudFormation Actions'
     )
+    string(name: 'STACK_NAME', defaultValue: 'example-stack', description: 'Enter the CloudFormation Stack Name.')
+    string(name: 'PARAMETERS_FILE_NAME', defaultValue: 'example-stack-parameters.properties', description: 'Enter the Parameters File Name (Must contain file extension type *.properties)')
+    string(name: 'TEMPLATE_NAME', defaultValue: 'Word.yml', description: 'Enter the CloudFormation Template Name (Must contain file extension type *.yaml)')
+    credentials(name: 'CFN_CREDENTIALS_ID', defaultValue: '', description: 'AWS Account Role.', required: true)
     choice(
-      name: 'MyKeyName',
-      choices: ['Moeez.Nv'],
-      description: 'CloudFormation Actions'
+      name: 'REGION',
+      choices: [
+          ' ',
+          'us-east-1',
+          'us-east-2'
+          ],
+      description: 'AWS Account Region'
     )
-    choice(
-      name: 'MyAvailabilityZone',
-      choices: ['us-east-1a', 'us-east-1b', 'us-east-1c'],
-      description: 'CloudFormation Actions'
-    )    
-    choice(
-      name: 'MyInstanceType',
-      choices: ['t2.micro', 't2.small', 't3.micro'],
-      description: 'CloudFormation Actions'
-    )   
   }
 
   stages { 
@@ -48,7 +46,7 @@ pipeline {
             expression { params.ACTION == 'delete-stack' }
         }
         steps {
-        sh "aws cloudformation delete-stack --stack-name jenkinstest --region 'us-east-1'"    
+        sh "aws cloudformation delete-stack ${STACK_NAME} ${REGION}"    
         }
     }
   }
