@@ -28,7 +28,7 @@ pipeline {
             expression { params.ACTION == 'deploy-stack' }
         }
         steps {
-        sh "aws cloudformation create-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"
+        sh "aws cloudformation create-stack ${STACK_NAME} ${TEMPLATE_NAME} ${REGION}"
         }
     }
 
@@ -37,7 +37,7 @@ pipeline {
             expression { params.ACTION == 'update-stack' }
         }
         steps {
-        sh "aws cloudformation update-stack --stack-name jenkinstest --template-body file://Word.yml --region 'us-east-1'"    
+        sh "aws cloudformation update-stack ${STACK_NAME} ${TEMPLATE_NAME} ${REGION}"    
         }
     }
 
