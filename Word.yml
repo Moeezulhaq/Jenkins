@@ -4,10 +4,10 @@ Parameters:
   MyKeyName:
     Default: ${MyKeyname}
     Description: Select the key name from the list
-    Type: AWS::EC2::KeyPair::KeyName
+    Type: AWS::EC2::KeyPair::${MyKeyname}
   MyAvailabilityZone:
     Description: Select the AZ
-    Type: AWS::EC2::AvailabilityZone::Name
+    Type: AWS::EC2::AvailabilityZone::${MyAvailabilityZone}
     Default: ${MyAvailabilityZone}
     # AllowedValues:
     #   - us-east-2a
@@ -18,7 +18,7 @@ Parameters:
     #   - us-east-1c
   MyInstanceType:
     Description: select EC2 instance type from list.
-    Type: AWS::EC2::Instance
+    Type: AWS::EC2::${MyInstanceType}
     Default: ${MyInstanceType}
     # AllowedValues:
     #   - t2.micro
