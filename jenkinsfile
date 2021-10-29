@@ -46,7 +46,7 @@ pipeline {
             expression { params.ACTION == 'delete-stack' }
         }
         steps {
-        sh "aws cloudformation delete-stack ${STACK_NAME} ${REGION}"    
+        sh "aws cloudformation delete-stack --stack-name${STACK_NAME} ${REGION}"    
         }
     }
   }
