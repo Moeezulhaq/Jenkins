@@ -6,6 +6,13 @@ pipeline {
       choices: ['deploy-stack', 'update-stack', 'delete-stack'],
       description: 'CloudFormation Actions'
     )
+    choice(
+      name: 'Parameters',
+      choices: ['MyKeyName', 'MyAvailabilityZone', 'MyInstanceType'],
+      description: 'CloudFormation Actions'
+    )
+  
+  
   }
 
   stages { 
