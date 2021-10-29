@@ -7,9 +7,7 @@ Parameters:
     Type: AWS::EC2::KeyPair::KeyName
   MyAvailabilityZone:
     Description: Select the AZ
-    Type: Fn::Select: 
-        - 0
-        - Fn::GetAZs: ""
+    Type: String
     Default: ${AvailabilityZone}
     AllowedValues:
       - us-east-2a
