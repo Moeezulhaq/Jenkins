@@ -1,6 +1,7 @@
 {
     "Parameters" : {
-      "MyKeyName" : "MoeezNv"
-      "MyAvailabilityZone" : "us-east-1a"
+      "MyKeyName" : "MoeezNv",
+      "MyAvailabilityZone" : "us-east-1a",
+      "MyInstanceType" : "t2.micro"
     }
   } 
