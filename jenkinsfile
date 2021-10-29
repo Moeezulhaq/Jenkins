@@ -28,7 +28,7 @@ pipeline {
             expression { params.ACTION == 'deploy-stack' }
         }
         steps {
-        sh "aws cloudformation create-stack ${STACK_NAME} ${TEMPLATE_NAME} ${REGION}"
+        sh "aws cloudformation create-stack --stack-name ${STACK_NAME} ${TEMPLATE_NAME} ${REGION}"
         }
     }
 
@@ -37,7 +37,7 @@ pipeline {
             expression { params.ACTION == 'update-stack' }
         }
         steps {
-        sh "aws cloudformation update-stack ${STACK_NAME} ${TEMPLATE_NAME} ${REGION}"    
+        sh "aws cloudformation update-stack --stack-name ${STACK_NAME} ${TEMPLATE_NAME} ${REGION}"    
         }
     }
 
@@ -46,7 +46,7 @@ pipeline {
             expression { params.ACTION == 'delete-stack' }
         }
         steps {
-        sh "aws cloudformation delete-stack --stack-name${STACK_NAME} ${REGION}"    
+        sh "aws cloudformation delete-stack --stack-name ${STACK_NAME} ${REGION}"    
         }
     }
   }
