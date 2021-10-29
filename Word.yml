@@ -7,7 +7,7 @@ Parameters:
     Type: AWS::EC2::KeyPair::KeyName
   MyAvailabilityZone:
     Description: Select the AZ
-    Type: String
+    Type: AWS::EC2::AvailabilityZone::Name
     Default: ${AvailabilityZone}
     AllowedValues:
       - us-east-2a
@@ -18,7 +18,7 @@ Parameters:
       - us-east-1c
   MyInstanceType:
     Description: select EC2 instance type from list.
-    Type: String
+    Type: AWS::EC2::Instance
     Default: ${InstanceType}
     AllowedValues:
       - t2.micro
