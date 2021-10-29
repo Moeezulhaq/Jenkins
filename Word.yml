@@ -19,7 +19,7 @@ Parameters:
   MyInstanceType:
     Description: select EC2 instance type from list.
     Type: AWS::EC2::Instance
-    Default: !Ref: InstanceTypeParameter
+    Default: ${InstanceType}
     # AllowedValues:
     #   - t2.micro
     #   - t2.small
