@@ -156,7 +156,7 @@ Resources:
   MyVMInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0a3f008f0f4bcf5f6
+      ImageId: ami-02e136e904f3da870
       InstanceType: !Ref MyInstanceType
       KeyName: !Ref MyKeyName
       AvailabilityZone: !Ref MyAvailabilityZone
@@ -192,7 +192,7 @@ Resources:
   MyWebInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0a3f008f0f4bcf5f6
+      ImageId: ami-02e136e904f3da870
       InstanceType: !Ref MyInstanceType
       KeyName: !Ref MyKeyName
       AvailabilityZone: !Ref MyAvailabilityZone
@@ -229,7 +229,7 @@ Resources:
   MyDBInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0a3f008f0f4bcf5f6
+      ImageId: ami-02e136e904f3da870
       InstanceType: !Ref MyInstanceType
       KeyName: !Ref MyKeyName
       AvailabilityZone: !Ref MyAvailabilityZone
