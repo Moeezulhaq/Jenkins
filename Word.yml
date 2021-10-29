@@ -2,13 +2,13 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
   MyKeyName:
-    Default: !Sub ${Keyname}
+    Default: !Sub "${Keyname}"
     Description: Select the key name from the list
     Type: AWS::EC2::KeyPair::KeyName
   MyAvailabilityZone:
     Description: Select the AZ
     Type: String
-    Default: us-east-1a
+    Default: "us-east-1a"
     AllowedValues:
       - us-east-2a
       - us-east-2b    
@@ -19,7 +19,7 @@ Parameters:
   MyInstanceType:
     Description: select EC2 instance type from list.
     Type: String
-    Default: t2.micro
+    Default: "t2.micro"
     AllowedValues:
       - t2.micro
       - t2.small
