@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
   MyKeyName:
-    Default: ${MyKeyname}
+    Default: Moeez.Nv
     Description: Select the key name from the list
     Type: AWS::EC2::KeyPair::KeyName
   MyAvailabilityZone:
