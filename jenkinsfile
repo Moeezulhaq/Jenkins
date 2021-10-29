@@ -15,7 +15,8 @@ pipeline {
       choices: [
           ' ',
           'us-east-1',
-          'us-east-2'
+          'us-east-2',
+          'us-east-1a'
           ],
       description: 'AWS Account Region'
     )
