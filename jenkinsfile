@@ -24,11 +24,7 @@ pipeline {
             expression { params.ACTION == 'deploy-stack' }
         }
         steps {
-        sh "aws cloudformation deploy  
-        --stack-name ${STACK_NAME} \
-        --template-body file://${TEMPLATE_NAME} \ 
-        --parameters-overrides file://${PARAMETERS_FILE_NAME} \ 
-        --region ${REGION}"
+        sh "aws cloudformation deploy --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME}  --parameters-overrides file://${PARAMETERS_FILE_NAME} --region ${REGION}"
         }
     }
 
