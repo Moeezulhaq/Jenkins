@@ -2,9 +2,9 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
   MyKeyName:
-    Default: ${KEY_NAME}
+    Default: !Sub ${AWS::AccountId}-${KEY_NAME}
     Description: Select the key name from the list
-    Type: AWS::EC2::KeyPair::KeyName
+    Type: String
   MyAvailabilityZone:
     Description: Select the AZ
     Type: String
