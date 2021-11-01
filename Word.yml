@@ -192,7 +192,7 @@ Resources:
   MyWebInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ${Ami}
+      ImageId: !Sub ${Ami}
       InstanceType: !Ref MyInstanceType
       KeyName: !Ref MyKeyName
       AvailabilityZone: !Ref MyAvailabilityZone
