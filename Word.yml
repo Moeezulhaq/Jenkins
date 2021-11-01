@@ -4,7 +4,7 @@ Parameters:
   MyKeyName:
     Default: !Ref KeyName
     Description: Select the key name from the list
-    Type: String
+    Type: AWS::EC2::KeyPair::KeyName
   MyAvailabilityZone:
     Description: Select the AZ
     Type: String
