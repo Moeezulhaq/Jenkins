@@ -24,7 +24,7 @@ pipeline {
             expression { params.ACTION == 'deploy-stack' }
         }
         steps {
-        sh "scripts/deploy-stack.sh --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME}  --parameters file://${PARAMETERS_FILE_NAME} --region ${REGION}"
+        sh "scripts/deploy-stack.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${REGION}"
         }
     }
 
