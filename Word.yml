@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
   MyKeyName:
-    Default: !Sub ${AWS::AccountId}-${KEY_NAME}
+    Default: !Ref KeyName
     Description: Select the key name from the list
     Type: String
   MyAvailabilityZone:
