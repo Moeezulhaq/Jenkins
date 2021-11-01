@@ -1,6 +1,8 @@
 [
     {
-      "KeyName" : "moazzamV.virginia"
+      "ParameterKey" : "KeyName",
+      "ParameterValue": "moazzamV.virginia",
+      "UsePreviousValue": false
     }
 ] 
 
