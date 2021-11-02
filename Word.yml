@@ -26,11 +26,16 @@ Parameters:
       - t3.micro
 
   MyCIDR:
-    Description: select cidr for VPC.
+    Description: select CIDR for VPC.
     Type: String
     Default: "10.0.0.0/16"
 
-      Resources:
+
+
+
+
+
+Resources:
   MyVPC:
     Type: AWS::EC2::VPC
     Properties:
