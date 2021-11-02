@@ -36,7 +36,7 @@ pipeline {
             expression { params.ACTION == 'update-stack' }
         }
         steps {
-        sh "aws cloudformation update-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION} --parameters ParameterKey=MyCIDR,ParameterValue=${CIDR} "    
+        sh "aws cloudformation update-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION} --parameters ParameterKey=MyCIDR,ParameterValue=${CIDR} ParameterKey=publicsubnetcidr,ParameterValue=${PUBLIC_SUBNET} ParameterKey=privatesubnetcidr,ParameterValue=${PRIVATE_SUBNET}"    
         }
     }
 
