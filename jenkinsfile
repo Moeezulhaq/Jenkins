@@ -49,4 +49,12 @@ pipeline {
         }
     }
   }
+
+  post
+  {
+      always
+      {
+        slackSend channel: 'moeez_testing', message: "Please Find status of Job ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+      }
+  }
 }
