@@ -10,6 +10,8 @@ pipeline {
     string(name: 'PARAMETERS_FILE_NAME', defaultValue: 'parameters/example-stack-parameters.properties', description: 'Enter the Parameters File Name (Must contain file extension type *.properties)')
     string(name: 'TEMPLATE_NAME', defaultValue: 'Word.yml', description: 'Enter the CloudFormation Template Name (Must contain file extension type *.yaml)')
     string(name: 'CIDR', defaultValue: '10.0.0.0/16', description: 'Enter the CIDR for CloudFormation Template ')
+    string(name: 'PUBLIC_SUBNET', defaultValue: '10.0.1.0/24', description: 'Enter the CIDR for CloudFormation Template public subnet')
+    string(name: 'PRIVATE_SUBNET', defaultValue: '10.0.2.0/24', description: 'Enter the CIDR for CloudFormation Template private subnet')
     credentials(name: 'CFN_CREDENTIALS_ID', defaultValue: '', description: 'AWS Account Role.', required: true)
     choice(
       name: 'REGION',
@@ -25,7 +27,7 @@ pipeline {
             expression { params.ACTION == 'deploy-stack' }
         }
         steps {
-        sh "aws cloudformation create-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION} --parameters ParameterKey=MyCIDR,ParameterValue=${CIDR} "
+        sh "aws cloudformation create-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION} --parameters ParameterKey=MyCIDR,ParameterValue=${CIDR} ParameterKey=public_subnet_cidr,ParameterValue=${PUBLIC_SUBNET} ParameterKey=private_subnet_cidr,ParameterValue=${PRIVATE_SUBNET}"
         }
     }
 
