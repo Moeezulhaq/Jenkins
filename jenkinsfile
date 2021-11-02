@@ -25,7 +25,7 @@ pipeline {
             expression { params.ACTION == 'deploy-stack' }
         }
         steps {
-        sh "aws cloudformation create-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION} --parameters ParameterKey=MyCIDR,ParameterValue= ${CIDR} "
+        sh "aws cloudformation create-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION} --parameters ParameterKey=MyCIDR,ParameterValue=${CIDR} "
         }
     }
 
