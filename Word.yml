@@ -30,8 +30,15 @@ Parameters:
     Type: String
     Default: "10.0.0.0/16"
 
+  public_subnet_cidr:
+    Description: select CIDR for VPC.
+    Type: String
+    Default: "10.0.1.0/24"
 
-
+  private_subnet_cidr:
+    Description: select CIDR for VPC.
+    Type: String
+    Default: "10.0.2.0/24"    
 
 
 
@@ -80,7 +87,7 @@ Resources:
     Properties:
       VpcId:
         Ref: MyVPC
-      CidrBlock: 10.0.1.0/24
+      CidrBlock: !Ref public_subnet_cidr
       AvailabilityZone: !Ref MyAvailabilityZone
       Tags:
       - Key: Name
@@ -91,7 +98,7 @@ Resources:
     Properties:
       VpcId:
         Ref: MyVPC
-      CidrBlock: 10.0.2.0/24
+      CidrBlock: !Ref private_subnet_cidr
       AvailabilityZone: !Ref MyAvailabilityZone
       Tags:
       - Key: Name
