@@ -9,6 +9,7 @@ pipeline {
     string(name: 'STACK_NAME', defaultValue: 'example-stack', description: 'Enter the CloudFormation Stack Name.')
     string(name: 'PARAMETERS_FILE_NAME', defaultValue: 'parameters/example-stack-parameters.properties', description: 'Enter the Parameters File Name (Must contain file extension type *.properties)')
     string(name: 'TEMPLATE_NAME', defaultValue: 'Word.yml', description: 'Enter the CloudFormation Template Name (Must contain file extension type *.yaml)')
+    string(name: 'AMI', defaultValue: 'ami-02e136e904f3da870', description: 'Enter the CloudFormation Template AMI for Instance')
     credentials(name: 'CFN_CREDENTIALS_ID', defaultValue: '', description: 'AWS Account Role.', required: true)
     choice(
       name: 'REGION',
@@ -24,7 +25,7 @@ pipeline {
             expression { params.ACTION == 'deploy-stack' }
         }
         steps {
-        sh "aws cloudformation create-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION}"
+        sh "aws cloudformation create-stack --stack-name ${STACK_NAME} --template-body file://${TEMPLATE_NAME} --region ${REGION} --parameters ParameterKey= ${AMI}"
         }
     }
 
