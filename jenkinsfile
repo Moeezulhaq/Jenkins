@@ -54,7 +54,10 @@ pipeline {
   {
       always
       {
-        slackSend channel: 'moeez_testing', message: "Please Find status of Job status- ${currentBuild.currentResult} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+        slackSend channel: 'moeez_testing', message: "Please Find status of Job status- ${currentBuild.currentResult} , 
+        JOB NAME-${env.JOB_NAME}, 
+        Build Number-${env.BUILD_NUMBER},
+        Build Url-${env.BUILD_URL}"
       }
   }
 }
